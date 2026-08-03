@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1a1d24" />
+  <title>Segment File — SZPC '26 | South Zone Programming Contest</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Ctext x='6' y='24' font-family='monospace' font-size='20' fill='%2300FF41'%3E%3E_%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { void: '#1a1d24', surface: '#242830', panel: '#2d333d', elevated: '#363d49', neon: '#00FF41', cyber: '#00F0FF', dim: '#b4bcc8' },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'] },
+      } },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-void text-gray-100 font-sans antialiased selection:bg-neon selection:text-black">
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/15 bg-surface/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+      <a href="index.html" data-testid="nav-logo" class="flex items-center gap-3 group">
+        <span class="w-8 h-8 border border-neon flex items-center justify-center text-neon font-display font-bold text-sm group-hover:bg-neon group-hover:text-black transition-colors duration-300">SZ</span>
+        <span class="font-display font-800 tracking-widest text-sm">SZPC<span class="text-neon">'26</span></span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="index.html" data-testid="back-to-home-link" class="border border-white/20 px-5 py-2 text-xs tracking-[0.2em] text-gray-200 hover:border-neon hover:text-neon transition-colors duration-300">← MAIN SITE</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="segment-root"></main>
+
+  <footer class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] tracking-[0.25em] text-dim">
+      <span>© <span id="year">2026</span> DEPT. OF CSE, UNIVERSITY OF GLOBAL VILLAGE</span>
+      <span>South Zone Programming Contest · University of Global Village</span>
+    </div>
+  </footer>
+
+  <script src="js/segment.js"></script>
+</body>
+</html>

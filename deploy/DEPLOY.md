@@ -86,7 +86,14 @@ APP_DIR=/home/ugvdev/szpcfull bash deploy/post-deploy.sh
 
 The script finds the app by `deploy/../artisan`, then `~/szpcfull`, then `/var/www/szpcfull`.
 
-Or run steps manually: `composer install --no-dev`, `php artisan migrate --force`, `php artisan config:cache`, restart Docker.
+`post-deploy.sh` uses host `composer`/`php` when available; otherwise it runs them inside the `szpcfull` Docker container. Start Docker first if Composer is not installed on the host:
+
+```bash
+cd /var/www/szpcfull/deploy && docker compose up -d
+bash /var/www/szpcfull/deploy/post-deploy.sh
+```
+
+Or run steps manually: `composer install --no-dev` (or `docker exec -w /app szpcfull composer install --no-dev`), `php artisan migrate --force`, `php artisan config:cache`.
 
 ## Smoke test
 

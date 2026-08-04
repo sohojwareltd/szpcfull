@@ -30,23 +30,42 @@ export APP_DIR
 cd "$APP_DIR"
 echo "==> App directory: $APP_DIR"
 
+# Prefer host tools; fall back to the Docker app container (webdevops/php-nginx).
+run_in_app() {
+  if command -v "$1" >/dev/null 2>&1; then
+    "$@"
+    return
+  fi
+
+  if command -v docker >/dev/null 2>&1 && docker ps --format '{{.Names}}' 2>/dev/null | grep -qx 'szpcfull'; then
+    echo "    (using docker exec szpcfull — host '$1' not found)"
+    docker exec -w /app szpcfull "$@"
+    return
+  fi
+
+  echo "Neither host '$1' nor running container 'szpcfull' is available." >&2
+  echo "Install Composer/PHP on the host, or start Docker first:" >&2
+  echo "  cd ${SCRIPT_DIR} && docker compose up -d" >&2
+  exit 1
+}
+
+echo "==> Ensure Docker app is up (if compose is present)"
+if [ -f "${SCRIPT_DIR}/docker-compose.yml" ] && command -v docker >/dev/null 2>&1; then
+  (cd "$SCRIPT_DIR" && docker compose up -d)
+fi
+
 echo "==> Composer (production)"
-composer install --no-dev --optimize-autoloader --no-interaction
+run_in_app composer install --no-dev --optimize-autoloader --no-interaction
 
 echo "==> Laravel optimize"
-php artisan migrate --force
-php artisan storage:link --force 2>/dev/null || true
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan filament:optimize 2>/dev/null || true
+run_in_app php artisan migrate --force
+run_in_app php artisan storage:link --force 2>/dev/null || true
+run_in_app php artisan config:cache
+run_in_app php artisan route:cache
+run_in_app php artisan view:cache
+run_in_app php artisan filament:optimize 2>/dev/null || true
 
 echo "==> Permissions (adjust user/group if needed)"
 chmod -R ug+rwX storage bootstrap/cache 2>/dev/null || true
-
-echo "==> Restart app container (if using Docker)"
-if [ -f "${SCRIPT_DIR}/docker-compose.yml" ] && command -v docker >/dev/null; then
-  (cd "$SCRIPT_DIR" && docker compose up -d)
-fi
 
 echo "Done. Site: ${APP_URL:-https://szpc.ugv.edu.bd}"

@@ -60,7 +60,10 @@ document.querySelectorAll('.faq-item').forEach((item) => {
 /* ---------- copy registration link buttons ---------- */
 document.querySelectorAll('.copy-link-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const url = `${window.location.origin}/${btn.dataset.copy}`;
+    const raw = btn.dataset.copy || '';
+    const url = /^https?:\/\//i.test(raw)
+      ? raw
+      : `${window.location.origin}${raw.startsWith('/') ? raw : `/${raw}`}`;
     try {
       await navigator.clipboard.writeText(url);
     } catch (err) {

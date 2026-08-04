@@ -42,9 +42,31 @@ return [
         'payload_extra' => [],
     ],
 
+    /*
+    | REVE SMS (same gateway as UGVOS — HTTP only, do not use https://)
+    | Used for registration/campaign SMS when configured (preferred over SMS_API_*).
+    */
+    'reve_sms' => [
+        'api_key' => env('REVE_SMS_API_KEY'),
+        'secret_key' => env('REVE_SMS_SECRET_KEY'),
+        'caller_id' => env('REVE_SMS_CALLER_ID'),
+        'base_url' => env('REVE_SMS_BASE_URL', 'http://sms.sasbulksms.com:3040'),
+        'timeout' => env('REVE_SMS_TIMEOUT', 30),
+    ],
+
     'turnstile' => [
         'site_key' => env('TURNSTILE_SITE_KEY', env('APP_ENV') === 'local' ? '1x00000000000000000000AA' : null),
         'secret_key' => env('TURNSTILE_SECRET_KEY', env('APP_ENV') === 'local' ? '1x0000000000000000000000000000000AA' : null),
+    ],
+
+    'contest_payment' => [
+        'ithq_bkash_number' => env('ITHQ_BKASH_NUMBER', '01703436278'),
+        'ithq_bkash_label' => env('ITHQ_BKASH_LABEL', 'personal'),
+        'fees' => [
+            'SZPC-2026' => 1000,
+            'JPC-2026' => 500,
+            'ITHQ-2026' => 100,
+        ],
     ],
 
 ];

@@ -3,15 +3,19 @@
 namespace App\Services;
 
 use App\Models\Registration;
+use App\Services\Sms\ReveSmsService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class SmsService
 {
+    public function __construct(
+        private readonly ReveSmsService $reveSms,
+    ) {}
+
     public function isConfigured(): bool
     {
-        return filled(config('services.sms.api_url'))
-            && filled(config('services.sms.api_key'));
+        return $this->reveSms->isConfigured() || $this->legacyIsConfigured();
     }
 
     public function send(Registration $registration, string $message): bool
@@ -30,18 +34,56 @@ class SmsService
             return ['success' => false, 'error' => 'Empty phone', 'response' => null];
         }
 
-        if (! $this->isConfigured()) {
-            Log::warning('SMS not sent: API not configured.', [
-                'registration_id' => $registration?->id,
-                'phone' => $phone,
-            ]);
-
-            return ['success' => false, 'error' => 'SMS API not configured', 'response' => null];
+        if ($this->reveSms->isConfigured()) {
+            return $this->sendViaReve($phone, $message, $registration);
         }
 
-        $normalized = $this->normalizePhone($phone);
+        if ($this->legacyIsConfigured()) {
+            return $this->sendViaLegacyHttp($phone, $message, $registration);
+        }
 
-        $response = Http::withHeaders($this->headers())
+        Log::warning('SMS not sent: gateway not configured.', [
+            'registration_id' => $registration?->id,
+            'phone' => $phone,
+        ]);
+
+        return ['success' => false, 'error' => 'SMS gateway not configured (set REVE_SMS_* in .env)', 'response' => null];
+    }
+
+    /**
+     * @return array{success: bool, error: ?string, response: ?string}
+     */
+    private function sendViaReve(string $phone, string $message, ?Registration $registration): array
+    {
+        $result = $this->reveSms->send($phone, $message);
+
+        if ($result->success) {
+            if ($registration) {
+                $registration->update(['last_sms_at' => now()]);
+            }
+
+            return [
+                'success' => true,
+                'error' => null,
+                'response' => json_encode($result->raw, JSON_UNESCAPED_UNICODE),
+            ];
+        }
+
+        return [
+            'success' => false,
+            'error' => $result->statusDescription ?: 'SMS rejected by gateway',
+            'response' => json_encode($result->raw, JSON_UNESCAPED_UNICODE),
+        ];
+    }
+
+    /**
+     * @return array{success: bool, error: ?string, response: ?string}
+     */
+    private function sendViaLegacyHttp(string $phone, string $message, ?Registration $registration): array
+    {
+        $normalized = $this->normalizePhoneLegacy($phone);
+
+        $response = Http::withHeaders($this->legacyHeaders())
             ->timeout(15)
             ->post(config('services.sms.api_url'), [
                 'to' => $normalized,
@@ -57,7 +99,7 @@ class SmsService
             return ['success' => true, 'error' => null, 'response' => $response->body()];
         }
 
-        Log::error('SMS API error', [
+        Log::error('Legacy SMS API error', [
             'registration_id' => $registration?->id,
             'status' => $response->status(),
             'body' => $response->body(),
@@ -70,10 +112,16 @@ class SmsService
         ];
     }
 
+    private function legacyIsConfigured(): bool
+    {
+        return filled(config('services.sms.api_url'))
+            && filled(config('services.sms.api_key'));
+    }
+
     /**
      * @return array<string, string>
      */
-    private function headers(): array
+    private function legacyHeaders(): array
     {
         $headers = [
             'Accept' => 'application/json',
@@ -92,7 +140,7 @@ class SmsService
         return $headers;
     }
 
-    private function normalizePhone(string $phone): string
+    private function normalizePhoneLegacy(string $phone): string
     {
         $digits = preg_replace('/\D+/', '', $phone) ?? $phone;
 

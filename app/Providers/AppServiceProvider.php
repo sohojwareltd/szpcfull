@@ -19,6 +19,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $siteViews = [
+            'partials.site-head',
+            'home',
+            'register',
+            'registration-success',
+            'segment',
+            'payment',
+            'payment-status',
+        ];
+
+        view()->composer($siteViews, \App\View\Composers\SiteComposer::class);
     }
 }

@@ -1,15 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#1a1d24" />
-  <meta name="description" content="Register for SZPC-2026, JPC-2026 or ITHQ-2026 — UGV Contest Registration 2026." />
-  <title>Register — SZPC '26 | UGV Contest Registration 2026</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Ctext x='6' y='24' font-family='monospace' font-size='20' fill='%2300FF41'%3E%3E_%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  @include('partials.site-head', ['seoPage' => $seoPage ?? 'register'])
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -45,25 +37,13 @@
 
   <main class="blueprint-x min-h-screen relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,255,65,0.12),transparent_60%)]"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-24 flex flex-col gap-8 w-full" data-testid="register-page">
+    <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-12 pt-10 pb-24 flex flex-col gap-8 w-full" data-testid="register-page">
 
-      <div class="register-page-header w-full pb-10 border-b border-white/15">
+      <div class="register-page-header w-full px-4 sm:px-0 pb-10 border-b border-white/15">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start mb-12">
-          <div>
-            <p class="text-neon text-sm font-medium mb-4">Team registration</p>
-            <h1 class="font-display font-800 text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">Register your <span class="text-neon">team</span></h1>
-            <p class="text-sm text-dim leading-relaxed mt-6 max-w-md">Choose your contest, enter your team details, and submit. Finals day: 29 August 2026 — one campus, three contests.</p>
-          </div>
+       
 
-          <div class="border border-white/10 p-5 text-sm text-dim leading-relaxed space-y-2 lg:max-w-md lg:ml-auto w-full" data-testid="register-status-panel">
-            <p><span class="text-gray-200 font-medium">Fees:</span> ৳1,000 SZPC · ৳500 JPC · ৳100 ITHQ</p>
-            <p><span class="text-gray-200 font-medium">Expected teams:</span> 30–35 SZPC · 60–70 JPC</p>
-            <p><span class="text-gray-200 font-medium">Deadline:</span> 17–20 Aug 2026</p>
-            <p><span class="text-neon font-medium">Status:</span> Open for registration</p>
-          </div>
-        </div>
-
-        <p class="text-neon text-sm font-medium mb-8">How it works</p>
+        <!-- <p class="text-neon text-sm font-medium mb-8">How it works</p>
         <ol class="timeline-h" data-testid="register-steps-timeline">
           <li class="timeline-h-item">
             <span class="timeline-dot border-neon" aria-hidden="true"></span>
@@ -83,10 +63,17 @@
             <h3 class="timeline-title text-base uppercase tracking-wide">Submit</h3>
             <p class="timeline-desc">The registration committee (UGV Programming Club) contacts you with payment instructions.</p>
           </li>
-        </ol>
+        </ol> -->
       </div>
 
-      <div class="register-panel w-full border border-neon/40 bg-panel/80 backdrop-blur p-6 sm:p-8 lg:p-10">
+      <div class="register-panel w-full max-w-none border-y sm:border border-neon/40 bg-panel/80 backdrop-blur px-4 py-6 sm:p-8 lg:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start mb-12">
+          <div>
+            <!-- <p class="text-neon text-sm font-medium mb-4">Team registration</p> -->
+            <h1 class="font-display font-800 text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">Register your <span class="text-neon">team</span></h1>
+            <!-- <p class="text-sm text-dim leading-relaxed mt-6 max-w-md">Choose your contest, enter your team details, and submit. Finals day: 29 August 2026 — one campus, three contests.</p> -->
+          </div>
+          </div>
         <div class="register-step">
           <h2 class="register-step-title">Step 1 — Choose your contest</h2>
           <p class="register-step-hint">Pick SZPC, JPC, or ITHQ. The form below updates with the fields you need.</p>
@@ -106,7 +93,7 @@
         </div>
         </div>
 
-        <form id="reg-form" data-testid="registration-form" class="hidden register-form-panel" method="post" action="{{ route('register.store') }}" novalidate>
+        <form id="reg-form" data-testid="registration-form" class="hidden register-form-panel w-full max-w-none" method="post" action="{{ route('register.store') }}" novalidate>
           @csrf
           <input type="hidden" name="contest_type" id="contest-type-input" value="" />
 
@@ -116,7 +103,7 @@
             <input type="text" name="company_website" id="company_website" value="" tabindex="-1" autocomplete="off" />
           </div>
 
-          <div id="form-fields" data-testid="form-fields"></div>
+          <div id="form-fields" data-testid="form-fields" class="w-full min-w-0"></div>
           <p id="form-error" data-testid="form-error-message" class="hidden mt-6 form-error-banner"></p>
 
           @if ($turnstileSiteKey)

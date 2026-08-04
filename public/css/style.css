@@ -280,11 +280,17 @@ select.field-input option { background: var(--surface); color: #f3f4f6; }
   background: #1f242c;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 10px;
-  padding: 0.75rem 0.875rem;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #ffffff;
+  padding: 1rem 1.125rem;
+  min-height: 3.25rem;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--neon);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+.register-panel .field-input::placeholder {
+  color: rgba(0, 255, 65, 0.4);
 }
 
 .register-panel .field-input:hover {
@@ -298,10 +304,11 @@ select.field-input option { background: var(--surface); color: #f3f4f6; }
 
 .register-panel select.field-input {
   cursor: pointer;
-  padding-right: 2.25rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='%23b4bcc8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  padding-right: 2.5rem;
+  background-color: #1f242c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='%2300FF41'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 0.75rem center;
+  background-position: right 0.875rem center;
   appearance: none;
 }
 
@@ -415,6 +422,23 @@ select.field-input option { background: var(--surface); color: #f3f4f6; }
 @media (max-width: 640px) {
   .count-cell { min-width: 62px; padding: 10px 8px; }
   .count-num { font-size: 1.3rem; }
+
+  .register-panel .register-form-panel,
+  .register-panel #form-fields,
+  .register-panel #form-fields .grid,
+  .register-panel #form-fields .field,
+  .register-panel #form-fields .member-block {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .register-panel .field-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* ---------- universities reverse marquee ---------- */

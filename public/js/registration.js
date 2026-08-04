@@ -126,14 +126,14 @@ function buildForm(contest) {
   const branch = FORM_SPEC.branches[contest];
   let html = `<h3 class="register-step-title">Step 2 — ${contest} details</h3>`;
   html += '<p class="register-step-hint">Fields marked with <span class="req">*</span> are required.</p>';
-  html += '<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">';
+  html += '<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5 w-full min-w-0">';
   Object.entries(branch).forEach(([k, v]) => { if (v.type) html += fieldHtml(k, v, ''); });
   html += '</div>';
   Object.entries(branch).forEach(([k, v]) => {
     if (!v.type) {
       html += `<div class="member-block" data-testid="member-block-${k}">
         <p class="member-title">${MEMBER_TITLES[k] || k.toUpperCase()}</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7 w-full min-w-0">
           ${Object.entries(v).map(([fk, fd]) => fieldHtml(fk, fd, `${k}_`)).join('')}
         </div>
       </div>`;

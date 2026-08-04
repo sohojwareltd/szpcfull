@@ -1,15 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#1a1d24" />
-  <meta name="description" content="Registration submitted — SZPC '26 | UGV Contest Registration 2026." />
-  <title>Registration received — SZPC '26</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Ctext x='6' y='24' font-family='monospace' font-size='20' fill='%2300FF41'%3E%3E_%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  @include('partials.site-head', ['seoPage' => $seoPage ?? 'success'])
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -58,13 +50,59 @@
           </div>
         </dl>
 
-        <p class="mt-8 text-sm text-gray-200 leading-relaxed">
-          Save your reference code. The registration committee will contact you at the number above with payment instructions, usually within 48 hours.
-        </p>
+        @if (session('payment_message'))
+          <p class="mt-6 text-sm text-gray-100 border border-neon/30 rounded-lg px-4 py-3 bg-neon/10">{{ session('payment_message') }}</p>
+        @endif
+
+        @if ($isIthq)
+          @include('partials.ithq-bkash-instructions', [
+            'referenceCode' => $reg['reference_code'],
+            'feeAmount' => config('services.contest_payment.fees.ITHQ-2026'),
+          ])
+
+          <form
+            method="post"
+            action="{{ route('payment.transaction', $reg['reference_code']) }}"
+            class="mt-6 border border-white/10 rounded-lg p-5 bg-surface/40"
+            data-testid="payment-transaction-form"
+          >
+            @csrf
+            <label for="payment_transaction_id" class="register-panel field-label block mb-2">bKash transaction ID</label>
+            <input
+              type="text"
+              name="payment_transaction_id"
+              id="payment_transaction_id"
+              class="register-panel field-input w-full"
+              placeholder="e.g. 8N90ABCD12"
+              value="{{ old('payment_transaction_id') }}"
+              required
+              autocomplete="off"
+            />
+            @error('payment_transaction_id')
+              <p class="mt-2 text-sm text-red-300">{{ $message }}</p>
+            @enderror
+            <button type="submit" class="mt-4 w-full sm:w-auto bg-neon text-black font-bold py-3 px-6 text-sm rounded-lg btn-hard">Submit transaction ID</button>
+          </form>
+
+          <p class="mt-6 text-sm text-dim leading-relaxed">
+            You can return anytime to check verification status:
+            <a href="{{ route('payment.show', $reg['reference_code']) }}" class="text-neon hover:underline">payment status page</a>.
+          </p>
+        @else
+          <p class="mt-8 text-sm text-gray-200 leading-relaxed">
+            Save your reference code. The registration committee will contact you at the number above with payment instructions, usually within 48 hours.
+          </p>
+          <p class="mt-4 text-sm text-dim">
+            Track progress anytime on the
+            <a href="{{ route('payment.show', $reg['reference_code']) }}" class="text-neon hover:underline">payment &amp; status page</a>.
+          </p>
+        @endif
+
         <p class="mt-4 text-sm text-dim">Finals day: 29 August 2026 — University of Global Village, Barishal.</p>
 
         <div class="mt-10 flex flex-col sm:flex-row gap-4">
           <a href="{{ route('register') }}" class="inline-flex justify-center bg-neon text-black font-bold py-3.5 px-6 text-sm rounded-lg btn-hard">Register another entry</a>
+          <a href="{{ route('payment') }}" class="inline-flex justify-center border border-white/25 px-6 py-3.5 text-sm font-medium rounded-lg text-gray-100 hover:border-neon hover:text-neon transition-colors duration-300">Payment lookup</a>
           <a href="{{ route('home') }}" class="inline-flex justify-center border border-white/25 px-6 py-3.5 text-sm font-medium rounded-lg text-gray-100 hover:border-neon hover:text-neon transition-colors duration-300">Back to main site</a>
         </div>
       </div>

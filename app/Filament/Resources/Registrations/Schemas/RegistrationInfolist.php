@@ -64,6 +64,8 @@ class RegistrationInfolist
                         TextEntry::make('contacted_at')->dateTime()->placeholder('—'),
                         IconEntry::make('is_paid')->label('Paid')->boolean(),
                         TextEntry::make('paid_at')->dateTime()->placeholder('—'),
+                        TextEntry::make('payment_transaction_id')->label('bKash trx ID')->placeholder('—'),
+                        TextEntry::make('payment_submitted_at')->dateTime()->label('Trx submitted')->placeholder('—'),
                         IconEntry::make('is_confirmed')->label('Confirmed')->boolean(),
                         TextEntry::make('confirmed_at')->dateTime()->placeholder('—'),
                         TextEntry::make('last_sms_at')->dateTime()->label('Last SMS')->placeholder('—'),

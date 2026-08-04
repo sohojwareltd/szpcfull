@@ -1,16 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#1a1d24" />
-  <meta name="description" content="SZPC '26 — 3rd UGV South Zone Programming Contest & ICT Talent Hunt, 29 August 2026 at University of Global Village, Barishal. Code. Solve. Quiz. Compete." />
-  <title>SZPC '26 — South Zone Programming Contest | University of Global Village</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Ctext x='6' y='24' font-family='monospace' font-size='20' fill='%2300FF41'%3E%3E_%3C/text%3E%3C/svg%3E" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  @include('partials.site-head', ['seoPage' => $seoPage ?? 'home'])
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -57,7 +48,8 @@
         <a href="#committee" data-testid="nav-link-committee" class="nav-anchor nav-link">TEAM</a>
         <a href="#faq" data-testid="nav-link-faq" class="nav-anchor nav-link">FAQ</a>
       </nav>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3 sm:gap-4">
+        <a href="{{ route('payment') }}" data-testid="nav-payment-verify-btn" class="hidden sm:inline-block border border-white/25 px-4 py-2 text-xs tracking-[0.15em] text-gray-200 hover:border-neon hover:text-neon transition-colors duration-300">VERIFY PAYMENT</a>
         <a href="{{ route('register') }}" data-testid="nav-register-btn" class="nav-anchor hidden sm:inline-block border border-neon text-neon px-5 py-2 text-xs tracking-[0.2em] hover:bg-neon hover:text-black transition-colors duration-300 btn-hard">REGISTER</a>
         <button id="menu-toggle" data-testid="mobile-menu-button" class="lg:hidden text-neon text-2xl leading-none" aria-label="Open menu">≡</button>
       </div>
@@ -74,6 +66,7 @@
     <!-- <a href="#sponsors" data-testid="mobile-link-sponsors" class="nav-anchor mobile-link">SPONSORS</a> -->
     <a href="#committee" data-testid="mobile-link-committee" class="nav-anchor mobile-link">TEAM</a>
     <a href="#faq" data-testid="mobile-link-faq" class="nav-anchor mobile-link">FAQ</a>
+    <a href="{{ route('payment') }}" data-testid="mobile-link-payment-verify" class="border border-white/25 text-gray-100 px-8 py-3">VERIFY PAYMENT</a>
     <a href="{{ route('register') }}" data-testid="mobile-link-register" class="border border-neon text-neon px-8 py-3 mt-4">REGISTER</a>
   </div>
 
@@ -112,6 +105,7 @@
 
       <div class="hero-fade mt-12 flex flex-wrap items-center gap-5" style="--d:1.1s">
         <a href="{{ route('register') }}" data-testid="hero-register-btn" class="bg-neon text-black font-bold px-8 py-4 text-sm tracking-[0.2em] btn-hard">REGISTER YOUR TEAM</a>
+        <!-- <a href="{{ route('payment') }}" data-testid="hero-payment-verify-btn" class="border border-white/25 px-8 py-4 text-sm tracking-[0.2em] text-gray-200 hover:border-neon hover:text-neon transition-colors duration-300 btn-hard">VERIFY PAYMENT</a> -->
         <a href="#segments" data-testid="hero-explore-btn" class="nav-anchor border border-white/20 px-8 py-4 text-sm tracking-[0.2em] text-gray-200 hover:border-cyber hover:text-cyber transition-colors duration-300">EXPLORE SEGMENTS →</a>
         <span class="text-xs text-dim">29 Aug 2026 · UGV Campus, Barishal</span>
       </div>
@@ -156,6 +150,81 @@
     </div>
   </div>
 
+    <!-- ================= SEGMENTS ================= -->
+    <section id="segments" class="py-24 lg:py-32 border-t border-white/15">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div>
+          <p class="reveal text-neon text-sm font-medium mb-4">Contest segments</p>
+          <h2 class="reveal font-display font-800 text-3xl sm:text-5xl uppercase tracking-tight" style="--d:.1s">Three ways to<br />enter the arena.</h2>
+        </div>
+        <p class="reveal max-w-sm text-sm text-dim leading-relaxed" style="--d:.2s">One flagship university contest, a junior track, and an ICT quiz — the whole South Zone pipeline on one campus, one day.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- flagship -->
+        <article class="reveal segment-card md:col-span-12 group" data-testid="segment-card-programming">
+          <!-- <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=1600&auto=format&fit=crop" alt="Programming contest" class="segment-img" loading="lazy" /> -->
+          <div class="relative z-10 flex flex-col h-full justify-between min-h-[26rem]">
+            <div class="flex items-start justify-between">
+              <span class="tag-chip border-neon text-neon">FLAGSHIP · UNIVERSITY</span>
+              <span class="tag-chip border-white/20 text-dim">ONLINE + ONSITE</span>
+            </div>
+            <div>
+              <h3 class="font-display font-800 text-2xl sm:text-4xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">SZPC-2026</h3>
+              <p class="text-sm text-dim max-w-md mb-6">The 3rd South Zone Programming Contest. Online prelim 22 Aug (2h, 5 problems), then a 3-hour, 9-problem onsite final at UGV's CSE labs. C, C++, Java or Python.</p>
+              <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4">
+                <div><span class="block text-dim tracking-widest mb-1">DATE</span>22 + 29 AUG</div>
+                <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳1,000 / TEAM</div>
+                <div><span class="block text-dim tracking-widest mb-1">VENUE</span>UGV CSE LABS (B2)</div>
+              </div>
+              <a href="{{ route('segment', ['s' => 'szpc']) }}" data-testid="segment-link-programming" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="{{ url('/register?c=szpc') }}" data-testid="copy-link-szpc">⧉ COPY REG LINK</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- junior programming contest -->
+        <article class="reveal segment-card md:col-span-6 group" data-testid="segment-card-jpc" style="--d:.15s">
+          <div class="relative z-10 flex flex-col h-full justify-between min-h-[26rem]">
+            <div class="flex items-start justify-between">
+              <span class="tag-chip border-cyber text-cyber">JUNIOR TRACK</span>
+              <span class="tag-chip border-white/20 text-dim">2–3 MEMBERS</span>
+            </div>
+            <div>
+              <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-cyber transition-colors duration-300">Junior Programming</h3>
+              <p class="text-sm text-dim mb-6">School, college & polytechnic teams solve levelled problems. Online prelim 20 Aug (Scratch allowed), onsite final 29 Aug in the junior lab block.</p>
+              <div class="grid grid-cols-2 gap-4 text-xs border-t border-white/10 pt-4">
+                <div><span class="block text-dim tracking-widest mb-1">DATE</span>20 + 29 AUG</div>
+                <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳500 / TEAM</div>
+              </div>
+              <a href="{{ route('segment', ['s' => 'jpc']) }}" data-testid="segment-link-jpc" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="{{ url('/register?c=jpc') }}" data-testid="copy-link-jpc">⧉ COPY REG LINK</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ict talent hunt quiz -->
+        <article class="reveal segment-card md:col-span-6 group" data-testid="segment-card-quiz">
+          <div class="relative z-10 flex flex-col h-full justify-between min-h-[20rem]">
+            <div class="flex items-start justify-between">
+              <span class="tag-chip border-neon text-neon">BUZZER FINAL</span>
+              <span class="tag-chip border-white/20 text-dim">INDIVIDUAL · SCHOOL & COLLEGE</span>
+            </div>
+            <div>
+              <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">ICT Talent Hunt Quiz</h3>
+              <p class="text-sm text-dim max-w-xl mb-6">An individual ICT knowledge showdown: written screening on 20 Aug, top 8 per category reach the live buzzer final in the UGV auditorium on 29 Aug, 3:00 PM.</p>
+              <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4 max-w-2xl">
+                <div><span class="block text-dim tracking-widest mb-1">DATE</span>20 + 29 AUG</div>
+                <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳100 / PERSON</div>
+                <div><span class="block text-dim tracking-widest mb-1">VENUE</span>AUDITORIUM</div>
+              </div>
+              <a href="{{ route('segment', ['s' => 'ithq']) }}" data-testid="segment-link-ithq" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="{{ url('/register?c=ithq') }}" data-testid="copy-link-ithq">⧉ COPY REG LINK</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= MANIFESTO / ABOUT ================= -->
   <section id="about" class="py-24 lg:py-32 blueprint-x section-lift">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
@@ -192,80 +261,7 @@
     </div>
   </section>
 
-  <!-- ================= SEGMENTS ================= -->
-  <section id="segments" class="py-24 lg:py-32 border-t border-white/15">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-        <div>
-          <p class="reveal text-neon text-sm font-medium mb-4">Contest segments</p>
-          <h2 class="reveal font-display font-800 text-3xl sm:text-5xl uppercase tracking-tight" style="--d:.1s">Three ways to<br />enter the arena.</h2>
-        </div>
-        <p class="reveal max-w-sm text-sm text-dim leading-relaxed" style="--d:.2s">One flagship university contest, a junior track, and an ICT quiz — the whole South Zone pipeline on one campus, one day.</p>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <!-- flagship -->
-        <article class="reveal segment-card md:col-span-7 group" data-testid="segment-card-programming">
-          <!-- <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=1600&auto=format&fit=crop" alt="Programming contest" class="segment-img" loading="lazy" /> -->
-          <div class="relative z-10 flex flex-col h-full justify-between min-h-[26rem]">
-            <div class="flex items-start justify-between">
-              <span class="tag-chip border-neon text-neon">FLAGSHIP · UNIVERSITY</span>
-              <span class="tag-chip border-white/20 text-dim">ONLINE + ONSITE</span>
-            </div>
-            <div>
-              <h3 class="font-display font-800 text-2xl sm:text-4xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">SZPC-2026</h3>
-              <p class="text-sm text-dim max-w-md mb-6">The 3rd South Zone Programming Contest. Online prelim 22 Aug (2h, 5 problems), then a 3-hour, 9-problem onsite final at UGV's CSE labs. C, C++, Java or Python.</p>
-              <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4">
-                <div><span class="block text-dim tracking-widest mb-1">DATE</span>22 + 29 AUG</div>
-                <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳1,000 / TEAM</div>
-                <div><span class="block text-dim tracking-widest mb-1">VENUE</span>UGV CSE LABS (B2)</div>
-              </div>
-              <a href="segment.html?s=szpc" data-testid="segment-link-programming" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="/register?c=szpc" data-testid="copy-link-szpc">⧉ COPY REG LINK</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- junior programming contest -->
-        <article class="reveal segment-card md:col-span-5 group" data-testid="segment-card-jpc" style="--d:.15s">
-          <div class="relative z-10 flex flex-col h-full justify-between min-h-[26rem]">
-            <div class="flex items-start justify-between">
-              <span class="tag-chip border-cyber text-cyber">JUNIOR TRACK</span>
-              <span class="tag-chip border-white/20 text-dim">2–3 MEMBERS</span>
-            </div>
-            <div>
-              <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-cyber transition-colors duration-300">Junior Programming</h3>
-              <p class="text-sm text-dim mb-6">School, college & polytechnic teams solve levelled problems. Online prelim 20 Aug (Scratch allowed), onsite final 29 Aug in the junior lab block.</p>
-              <div class="grid grid-cols-2 gap-4 text-xs border-t border-white/10 pt-4">
-                <div><span class="block text-dim tracking-widest mb-1">DATE</span>20 + 29 AUG</div>
-                <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳500 / TEAM</div>
-              </div>
-              <a href="segment.html?s=jpc" data-testid="segment-link-jpc" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="/register?c=jpc" data-testid="copy-link-jpc">⧉ COPY REG LINK</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- ict talent hunt quiz -->
-        <article class="reveal segment-card md:col-span-12 group" data-testid="segment-card-quiz">
-          <div class="relative z-10 flex flex-col h-full justify-between min-h-[20rem]">
-            <div class="flex items-start justify-between">
-              <span class="tag-chip border-neon text-neon">BUZZER FINAL</span>
-              <span class="tag-chip border-white/20 text-dim">INDIVIDUAL · SCHOOL & COLLEGE</span>
-            </div>
-            <div>
-              <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">ICT Talent Hunt Quiz</h3>
-              <p class="text-sm text-dim max-w-xl mb-6">An individual ICT knowledge showdown: written screening on 20 Aug, top 8 per category reach the live buzzer final in the UGV auditorium on 29 Aug, 3:00 PM.</p>
-              <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4 max-w-2xl">
-                <div><span class="block text-dim tracking-widest mb-1">DATE</span>20 + 29 AUG</div>
-                <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳100 / PERSON</div>
-                <div><span class="block text-dim tracking-widest mb-1">VENUE</span>AUDITORIUM</div>
-              </div>
-              <a href="segment.html?s=ithq" data-testid="segment-link-ithq" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="/register?c=ithq" data-testid="copy-link-ithq">⧉ COPY REG LINK</button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <!-- ================= SCHEDULE ================= -->
   <section id="schedule" class="py-24 lg:py-32 border-t border-white/15 blueprint-x section-lift">
@@ -362,78 +358,6 @@
   -->
 
   <!-- ================= COMMITTEE ================= -->
-  <section id="committee" class="py-24 lg:py-32 border-t border-white/15 blueprint-x section-lift">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-        <div>
-          <p class="reveal text-neon text-sm font-medium mb-4">Organizing team</p>
-          <h2 class="reveal font-display font-800 text-3xl sm:text-5xl uppercase tracking-tight" style="--d:.1s">Behind the system.</h2>
-        </div>
-        <p class="reveal max-w-sm text-sm text-dim leading-relaxed" style="--d:.2s">The faculty, engineers and club volunteers running three contests on one campus — organized by the UGV Programming Club with the Department of CSE.</p>
-      </div>
-
-      <div class="reveal tribute-card mb-6" data-testid="chief-patron-tribute-card">
-        <span class="tribute-corner tl"></span><span class="tribute-corner tr"></span><span class="tribute-corner bl"></span><span class="tribute-corner br"></span>
-        <div class="flex flex-col md:flex-row items-center gap-10">
-          <div class="tribute-mono" data-testid="chief-patron-monogram">IC</div>
-          <div class="flex-1 text-center md:text-left">
-            <p class="text-neon text-sm font-medium mb-4">Chief patron</p>
-            <h3 class="font-display font-900 text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-tight">Dr. Md. <span class="text-neon glow-neon">Imran Chowdhury</span></h3>
-            <p class="mt-5 text-sm sm:text-base text-dim leading-relaxed max-w-2xl md:mx-0 mx-auto">The visionary force behind UGV — as Chairman of the Board of Trustees, his push for technology education in the South Zone made an arena like SZPC possible on this campus.</p>
-            <p class="mt-6 text-sm text-dim" data-testid="chief-patron-status-line">Supporting the South Zone programming community.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal tribute-card mb-6" data-testid="patron-tribute-card" style="--d:.05s">
-        <span class="tribute-corner tl"></span><span class="tribute-corner tr"></span><span class="tribute-corner bl"></span><span class="tribute-corner br"></span>
-        <div class="flex flex-col md:flex-row items-center gap-10">
-          <div class="tribute-mono" data-testid="patron-monogram">AB</div>
-          <div class="flex-1 text-center md:text-left">
-            <p class="text-neon text-sm font-medium mb-4">Patron</p>
-            <h3 class="font-display font-900 text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-tight">Dr. <span class="text-neon glow-neon">Abdul Baqee</span></h3>
-            <p class="mt-5 text-sm sm:text-base text-dim leading-relaxed max-w-2xl md:mx-0 mx-auto">At the academic helm of UGV — the Vice Chancellor's backing turned a departmental programming contest into a zone-wide talent hunt, from school classrooms to university labs.</p>
-            <p class="mt-6 text-sm text-dim" data-testid="patron-status-line">Backing teams across the South Zone.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal tribute-card mb-16" data-testid="advisor-tribute-card" style="--d:.15s">
-        <span class="tribute-corner tl"></span><span class="tribute-corner tr"></span><span class="tribute-corner bl"></span><span class="tribute-corner br"></span>
-        <div class="flex flex-col md:flex-row items-center gap-10">
-          <div class="tribute-mono" data-testid="advisor-monogram">MK</div>
-          <div class="flex-1 text-center md:text-left">
-            <p class="text-neon text-sm font-medium mb-4">Chief advisor</p>
-            <h3 class="font-display font-900 text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-tight">Prof. Dr. <span class="text-neon glow-neon">M. Kaykobad</span></h3>
-            <p class="mt-5 text-sm sm:text-base text-dim leading-relaxed max-w-2xl md:mx-0 mx-auto">The godfather of competitive programming in Bangladesh — the mentor who put Bangladeshi teams on the world ICPC map and inspired a generation of problem solvers. SZPC '26 is honored to run under his guidance.</p>
-            <p class="mt-6 text-sm text-dim" data-testid="advisor-status-line">Guiding the next generation of competitive programmers.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pb-4" data-testid="committee-leadership-grid">
-        <div class="reveal leader-card" data-testid="leader-card-convener"><span class="leader-role">CONVENER</span><span class="leader-name">Md Riadul Islam</span><span class="leader-desig">Head, Department of CSE</span></div>
-        <div class="reveal leader-card" data-testid="leader-card-member-secretary" style="--d:.05s"><span class="leader-role">MEMBER SECRETARY</span><span class="leader-name">Partho Sarathi Sarker</span><span class="leader-desig">Co-Head, Department of CSE</span></div>
-        <div class="reveal leader-card" data-testid="leader-card-contest-director" style="--d:.1s"><span class="leader-role">CONTEST DIRECTOR</span><span class="leader-name">Md Zahid Akon</span><span class="leader-desig">Contest Director</span></div>
-      </div>
-
-      <!-- Sub-committees only (hidden; main committee section above stays visible) -->
-      <p class="reveal text-cyber text-sm font-medium mt-20 mb-6">Sub-committees</p>
-      <dl class="reveal border-t border-white/10" style="--d:.1s" data-testid="committee-subgrid">
-        <div class="committee-row"><dt>JUDGING — SZPC & JPC</dt><dd>Md Zahid Akon · Saif Bashar Akash · Hasnat Sayed Mahfuzur Rahman · Hasanat Nihal</dd></div>
-        <div class="committee-row"><dt>QUIZ — ITHQ</dt><dd>Md Tariqul Islam · Md Masudur Rahman Akash · Hasnat</dd></div>
-        <div class="committee-row"><dt>TECHNICAL</dt><dd>Rafiqul Islam Rahat — IT Engineer</dd></div>
-        <div class="committee-row"><dt>REGISTRATION</dt><dd>UGV Programming Club</dd></div>
-        <div class="committee-row"><dt>SECURITY & DISCIPLINE</dt><dd>Md Tariqul Islam — Assistant Proctor</dd></div>
-        <div class="committee-row"><dt>FINANCE · FOOD · TRANSPORT · PRIZE</dt><dd>Md. Gius Uddin Khan — Accountant</dd></div>
-        <div class="committee-row"><dt>HOSPITALITY</dt><dd>Alomgir Hossain · Akash Hasnat</dd></div>
-        <div class="committee-row"><dt>MEDIA</dt><dd>Md. Tariqur Rahman</dd></div>
-        <div class="committee-row"><dt>PHOTOGRAPHY</dt><dd>Jayed Ibn Harun</dd></div>
-        <div class="committee-row"><dt>VOLUNTEER & EMERGENCY</dt><dd>Md Zahid Akon · Md Mehedi Hasan · Sayed Mahfuzur Rahman</dd></div>
-      </dl>
-      -->
-    </div>
-  </section>
 
   <!-- ================= FAQ ================= -->
   <section id="faq" class="py-24 lg:py-32 border-t border-white/15 blueprint-x">
@@ -510,9 +434,9 @@
       <div class="md:col-span-3">
         <h4 class="text-xs tracking-[0.3em] text-dim mb-5">CONTACT</h4>
         <ul class="text-sm space-y-3">
-          <li><a href="mailto:szpc@ugv.edu.bd" data-testid="contact-email" class="hover:text-neon transition-colors duration-300">szpc@ugv.edu.bd</a></li>
-          <li><a href="tel:+8801700000000" data-testid="contact-phone" class="hover:text-neon transition-colors duration-300">+880 1700-000000</a></li>
-          <li class="text-dim">CSE Dept., UGV Campus,<br />Barishal 8200, Bangladesh</li>
+          <li><a href="mailto:{{ $siteSettings->contact_email ?: 'szpc@ugv.edu.bd' }}" data-testid="contact-email" class="hover:text-neon transition-colors duration-300">{{ $siteSettings->contact_email ?: 'szpc@ugv.edu.bd' }}</a></li>
+          <li><a href="tel:{{ preg_replace('/\s+/', '', $siteSettings->contact_phone ?: '+8801700000000') }}" data-testid="contact-phone" class="hover:text-neon transition-colors duration-300">{{ $siteSettings->contact_phone ?: '+880 1700-000000' }}</a></li>
+          <li class="text-dim">{!! nl2br(e($siteSettings->contact_address ?: "CSE Dept., UGV Campus,\nBarishal 8200, Bangladesh")) !!}</li>
         </ul>
       </div>
       <div class="md:col-span-4">
@@ -526,6 +450,7 @@
           <li><a href="#committee" data-testid="footer-link-committee" class="nav-anchor hover:text-neon transition-colors duration-300">Team</a></li>
           <li><a href="#faq" data-testid="footer-link-faq" class="nav-anchor hover:text-neon transition-colors duration-300">FAQ</a></li>
           <li><a href="{{ route('register') }}" data-testid="footer-link-register" class="hover:text-neon transition-colors duration-300">Register</a></li>
+          <li><a href="{{ route('payment') }}" data-testid="footer-link-payment-verify" class="hover:text-neon transition-colors duration-300">Verify payment</a></li>
         </ul>
       </div>
     </div>
@@ -540,6 +465,3 @@
   <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
-html>
-</html>
-html>

@@ -6,21 +6,31 @@
 | **App path** | `/var/www/szpcfull` **or** `~/szpcfull` (your VPS clone) |
 | **SSH** | `ssh -p 22 ugvdev@192.168.2.24` |
 | **Admin** | `/admin` |
-| **Docker app** | `127.0.0.1:8080` → nginx → public |
+| **Runtime** | Host **nginx + PHP-FPM** (same as UGVOS) |
 
 You may also have a clone under `~/szpcfull` on the server; production should track **`/var/www/szpcfull`** (or symlink `~/szpcfull` → `/var/www/szpcfull`).
+
+> Docker (`deploy/docker-compose.yml`) is optional and currently unreliable on this VPS (`runc` exit 127). Prefer native PHP-FPM.
 
 ## First-time server setup
 
 ```bash
 sudo mkdir -p /var/www/szpcfull
-sudo chown -R ugvdev:www-data /var/www/szpcfull   # adjust group to your php/nginx user
+sudo chown -R ugvdev:www-data /var/www/szpcfull
+
+# PHP + Composer (skip packages already installed for UGVOS)
+sudo apt update
+sudo apt install -y php8.3-cli php8.3-fpm php8.3-mysql php8.3-xml php8.3-mbstring \
+  php8.3-curl php8.3-zip php8.3-gd php8.3-bcmath unzip
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
 
 cd /var/www/szpcfull
-git clone <repo-url> .   # or rsync from local
+# git clone <repo-url> .   # or rsync from local
 
 cp .env.example .env
 nano .env
+composer install --no-dev --optimize-autoloader --no-interaction
 php artisan key:generate
 ```
 
@@ -48,13 +58,17 @@ TURNSTILE_SITE_KEY=...
 TURNSTILE_SECRET_KEY=...
 ```
 
-## Docker + nginx
+## nginx + PHP-FPM
+
+Confirm the PHP-FPM socket (must match `nginx-szpcfull.conf`):
 
 ```bash
-cd /var/www/szpcfull/deploy
-docker compose up -d
+ls /run/php/
+# expect something like: php8.3-fpm.sock
+```
 
-sudo cp nginx-szpcfull.conf /etc/nginx/sites-available/szpcfull
+```bash
+sudo cp /var/www/szpcfull/deploy/nginx-szpcfull.conf /etc/nginx/sites-available/szpcfull
 sudo ln -sf /etc/nginx/sites-available/szpcfull /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 ```
@@ -74,26 +88,12 @@ rsync -avz --exclude node_modules --exclude vendor --exclude .env \
   ./ ugvdev@192.168.2.24:/var/www/szpcfull/
 ```
 
-On the server (from anywhere in the repo, or with an explicit path):
+On the server:
 
 ```bash
-cd ~/szpcfull
+cd /var/www/szpcfull
 bash deploy/post-deploy.sh
-
-# Or:
-APP_DIR=/home/ugvdev/szpcfull bash deploy/post-deploy.sh
 ```
-
-The script finds the app by `deploy/../artisan`, then `~/szpcfull`, then `/var/www/szpcfull`.
-
-`post-deploy.sh` uses host `composer`/`php` when available; otherwise it runs them inside the `szpcfull` Docker container. Start Docker first if Composer is not installed on the host:
-
-```bash
-cd /var/www/szpcfull/deploy && docker compose up -d
-bash /var/www/szpcfull/deploy/post-deploy.sh
-```
-
-Or run steps manually: `composer install --no-dev` (or `docker exec -w /app szpcfull composer install --no-dev`), `php artisan migrate --force`, `php artisan config:cache`.
 
 ## Smoke test
 
@@ -109,3 +109,16 @@ php artisan sms:send 01XXXXXXXXX "SZPC deploy test"
 |--|--|--|
 | URL | `https://szpcfull.test` | `https://szpc.ugv.edu.bd` |
 | Path | `~/Dev/laravel/szpcfull` | `/var/www/szpcfull` |
+| PHP | Herd | Host PHP-FPM |
+
+## Optional: Docker debug
+
+If you still want to fix Docker later:
+
+```bash
+docker run --rm hello-world
+sudo systemctl restart docker
+docker compose -f deploy/docker-compose.yml up -d
+```
+
+If `hello-world` also fails with `runc` / exit 127, the host Docker install is broken — stay on PHP-FPM.

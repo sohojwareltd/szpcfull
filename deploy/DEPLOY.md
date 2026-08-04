@@ -18,10 +18,10 @@ You may also have a clone under `~/szpcfull` on the server; production should tr
 sudo mkdir -p /var/www/szpcfull
 sudo chown -R ugvdev:www-data /var/www/szpcfull
 
-# PHP + Composer (skip packages already installed for UGVOS)
-sudo apt update
-sudo apt install -y php8.3-cli php8.3-fpm php8.3-mysql php8.3-xml php8.3-mbstring \
-  php8.3-curl php8.3-zip php8.3-gd php8.3-bcmath unzip
+# PHP extensions (curl, mbstring, xml, zip, gd, intl, mysql, …)
+bash deploy/enable-php-extensions.sh
+
+# Composer (if missing)
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
@@ -64,7 +64,7 @@ Confirm the PHP-FPM socket (must match `nginx-szpcfull.conf`):
 
 ```bash
 ls /run/php/
-# expect something like: php8.3-fpm.sock
+# expect something like: php8.5-fpm.sock
 ```
 
 ```bash

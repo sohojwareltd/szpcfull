@@ -27,8 +27,8 @@ resolve_app_dir() {
 require_cmd() {
   if ! command -v "$1" >/dev/null 2>&1; then
     echo "'$1' not found on PATH." >&2
-    echo "Install PHP 8.3 + Composer on the host (same as UGVOS), e.g.:" >&2
-    echo "  sudo apt install php8.3-cli php8.3-fpm php8.3-mysql php8.3-xml php8.3-mbstring php8.3-curl php8.3-zip php8.3-gd php8.3-bcmath" >&2
+    echo "Install PHP + Composer on the host, e.g.:" >&2
+    echo "  bash deploy/enable-php-extensions.sh" >&2
     echo "  curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer" >&2
     exit 1
   fi
@@ -58,8 +58,9 @@ echo "==> Permissions (adjust user/group if needed)"
 chmod -R ug+rwX storage bootstrap/cache 2>/dev/null || true
 
 if command -v sudo >/dev/null 2>&1; then
-  sudo systemctl reload php8.3-fpm 2>/dev/null \
-    || sudo systemctl reload php8.2-fpm 2>/dev/null \
+  sudo systemctl reload php8.5-fpm 2>/dev/null \
+    || sudo systemctl reload php8.4-fpm 2>/dev/null \
+    || sudo systemctl reload php8.3-fpm 2>/dev/null \
     || sudo systemctl reload php-fpm 2>/dev/null \
     || true
 fi

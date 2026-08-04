@@ -19,3 +19,8 @@ Route::get('/payment/{reference_code}', [PaymentController::class, 'show'])->nam
 Route::post('/payment/{reference_code}/transaction', [PaymentController::class, 'storeTransaction'])
     ->middleware('throttle:10,1')
     ->name('payment.transaction');
+
+
+Route::get('/test', function () {
+   
+});

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\ContestType;
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Models\Registration;
+use App\Services\MessagingService;
 use App\Services\TeamProvisioner;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -12,6 +13,10 @@ use Illuminate\View\View;
 
 class RegistrationController extends Controller
 {
+    public function __construct(
+        private readonly MessagingService $messaging,
+    ) {}
+
     public function create(): View
     {
         return view('register', [
@@ -59,6 +64,9 @@ class RegistrationController extends Controller
         $this->syncMembers($registration, $data);
 
         app(TeamProvisioner::class)->syncFromRegistration($registration->fresh(['members']));
+
+        $registration = $registration->fresh(['members', 'team.members', 'team.leader']);
+        $this->messaging->sendRegistrationSubmitted($registration);
 
         return redirect()
             ->route('register.success')

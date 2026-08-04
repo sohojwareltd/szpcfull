@@ -43,6 +43,7 @@ class MessageTemplateRenderer
             'member_tshirt',
             'leader_name',
             'leader_phone',
+            'payment_url',
         ];
     }
 
@@ -68,6 +69,7 @@ class MessageTemplateRenderer
             'member_tshirt' => $memberForContext?->tshirt_size ?? '',
             'leader_name' => $leader?->full_name ?? $registration->full_name ?? '',
             'leader_phone' => $leader?->displayPhone() ?? $registration->phone ?? '',
+            'payment_url' => route('payment.show', $registration->reference_code),
         ];
 
         $output = $template;

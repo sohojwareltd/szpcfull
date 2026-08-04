@@ -29,12 +29,15 @@ class SiteSetting extends Model
         'success_meta_title',
         'success_meta_description',
         'analytics_measurement_id',
+        'registration_submitted_sms_enabled',
+        'registration_submitted_sms_template',
     ];
 
     protected function casts(): array
     {
         return [
             'robots_index' => 'boolean',
+            'registration_submitted_sms_enabled' => 'boolean',
         ];
     }
 
@@ -92,6 +95,8 @@ class SiteSetting extends Model
             'register_meta_description' => 'Register for SZPC-2026, JPC-2026 or ITHQ-2026 — UGV Contest Registration 2026.',
             'success_meta_title' => "Registration received — SZPC '26",
             'success_meta_description' => 'Your contest registration was submitted successfully.',
+            'registration_submitted_sms_enabled' => true,
+            'registration_submitted_sms_template' => "SZPC '26: Hello {{member_name}}, your registration is received. Ref: {{reference_code}} ({{contest_type}}). Track payment: {{payment_url}} — UGV Programming Club",
         ];
     }
 
@@ -149,5 +154,14 @@ class SiteSetting extends Model
     public function canonicalUrl(): string
     {
         return url()->current();
+    }
+
+    public function registrationSubmittedSmsTemplateOrDefault(): string
+    {
+        if (filled(trim((string) $this->registration_submitted_sms_template))) {
+            return trim((string) $this->registration_submitted_sms_template);
+        }
+
+        return self::defaultAttributes()['registration_submitted_sms_template'];
     }
 }

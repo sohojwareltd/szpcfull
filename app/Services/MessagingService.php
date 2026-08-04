@@ -9,6 +9,7 @@ use App\Enums\MessageType;
 use App\Models\MessageCampaign;
 use App\Models\MessageLog;
 use App\Models\Registration;
+use App\Models\SiteSetting;
 use App\Models\Team;
 use App\Models\TeamMember;
 use App\Models\User;
@@ -89,6 +90,34 @@ class MessagingService
             messageType: MessageType::Individual,
             campaign: null,
             sender: $sender,
+        );
+    }
+
+    public function sendRegistrationSubmitted(Registration $registration): ?MessageLog
+    {
+        $settings = SiteSetting::current();
+
+        if (! $settings->registration_submitted_sms_enabled) {
+            return null;
+        }
+
+        $template = $settings->registrationSubmittedSmsTemplateOrDefault();
+        if (! filled(trim($template))) {
+            return null;
+        }
+
+        $registration->loadMissing(['team.members', 'team.leader']);
+
+        return $this->dispatchMessage(
+            template: $template,
+            registration: $registration,
+            member: null,
+            phone: $registration->smsRecipientPhone(),
+            name: $registration->displayName(),
+            recipientType: 'registration',
+            messageType: MessageType::RegistrationSubmitted,
+            campaign: null,
+            sender: null,
         );
     }
 

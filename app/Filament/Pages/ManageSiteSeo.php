@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Models\SiteSetting;
+use App\Services\MessageTemplateRenderer;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
@@ -122,6 +123,18 @@ class ManageSiteSeo extends Page
                             ->maxSize(512),
                         TextInput::make('google_site_verification')->label('Google Search Console verification'),
                         TextInput::make('analytics_measurement_id')->label('Google Analytics measurement ID')->placeholder('G-XXXXXXXXXX'),
+                    ]),
+                Section::make('Registration submitted SMS')
+                    ->description('Sent to the primary contact phone when someone completes the public registration form. Requires REVE_SMS_* or legacy SMS_API_* in .env.')
+                    ->schema([
+                        Toggle::make('registration_submitted_sms_enabled')
+                            ->label('Send SMS on new registration')
+                            ->inline(false),
+                        Textarea::make('registration_submitted_sms_template')
+                            ->label('Message template')
+                            ->rows(5)
+                            ->helperText('Placeholders: '.MessageTemplateRenderer::placeholderHelp())
+                            ->placeholder(SiteSetting::defaultAttributes()['registration_submitted_sms_template']),
                     ]),
                 Section::make('Contact (footer)')
                     ->columns(2)

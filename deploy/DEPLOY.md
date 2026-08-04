@@ -3,7 +3,7 @@
 | Item | Value |
 |------|--------|
 | **Public URL** | https://szpc.ugv.edu.bd |
-| **App path** | `/var/www/szpcfull` |
+| **App path** | `/var/www/szpcfull` **or** `~/szpcfull` (your VPS clone) |
 | **SSH** | `ssh -p 22 ugvdev@192.168.2.24` |
 | **Admin** | `/admin` |
 | **Docker app** | `127.0.0.1:8080` → nginx → public |
@@ -74,13 +74,17 @@ rsync -avz --exclude node_modules --exclude vendor --exclude .env \
   ./ ugvdev@192.168.2.24:/var/www/szpcfull/
 ```
 
-On the server:
+On the server (from anywhere in the repo, or with an explicit path):
 
 ```bash
-ssh -p 22 ugvdev@192.168.2.24
-cd /var/www/szpcfull
+cd ~/szpcfull
 bash deploy/post-deploy.sh
+
+# Or:
+APP_DIR=/home/ugvdev/szpcfull bash deploy/post-deploy.sh
 ```
+
+The script finds the app by `deploy/../artisan`, then `~/szpcfull`, then `/var/www/szpcfull`.
 
 Or run steps manually: `composer install --no-dev`, `php artisan migrate --force`, `php artisan config:cache`, restart Docker.
 

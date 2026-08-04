@@ -1,5 +1,5 @@
-# Run on VPS from /var/www/szpcfull/deploy:
-#   docker compose up -d
+# Run from repo deploy/ folder (works for ~/szpcfull or /var/www/szpcfull):
+#   cd ~/szpcfull/deploy && docker compose up -d
 #
 # Public site: https://szpc.ugv.edu.bd (nginx proxies to 127.0.0.1:8080)
 
@@ -11,7 +11,7 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - /var/www/szpcfull:/app
+      - ..:/app
     environment:
       WEB_DOCUMENT_ROOT: /app/public
       PHP_MEMORY_LIMIT: 512M

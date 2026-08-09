@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Enums\ContestType;
-use App\Rules\Turnstile;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -23,7 +22,6 @@ class StoreRegistrationRequest extends FormRequest
         $rules = [
             'contest_type' => ['required', Rule::enum(ContestType::class)],
             'company_website' => ['nullable', 'string', 'max:255'],
-            'cf-turnstile-response' => ['required', 'string', new Turnstile],
         ];
 
         if ($contest === ContestType::Szpc->value) {

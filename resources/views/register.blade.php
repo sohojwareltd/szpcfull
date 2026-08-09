@@ -106,13 +106,6 @@
           <div id="form-fields" data-testid="form-fields" class="w-full min-w-0"></div>
           <p id="form-error" data-testid="form-error-message" class="hidden mt-6 form-error-banner"></p>
 
-          @if ($turnstileSiteKey)
-            <div class="mt-6" data-testid="turnstile-widget">
-              <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-              <div class="cf-turnstile" data-sitekey="{{ $turnstileSiteKey }}" data-theme="dark"></div>
-            </div>
-          @endif
-
           <button type="submit" data-testid="form-submit-button" class="mt-8 w-full bg-neon text-black font-bold py-3.5 text-base rounded-lg btn-hard">Submit registration</button>
           <p class="mt-4 form-demo-note">Secure registration — stored for the organizing committee.</p>
         </form>

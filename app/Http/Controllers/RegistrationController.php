@@ -21,7 +21,6 @@ class RegistrationController extends Controller
     {
         return view('register', [
             'contests' => ContestType::cases(),
-            'turnstileSiteKey' => config('services.turnstile.site_key'),
             'seoPage' => 'register',
         ]);
     }

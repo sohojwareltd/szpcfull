@@ -25,7 +25,7 @@
       },
     };
   </script>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}" />
 </head>
 
 <body class="bg-void text-gray-100 font-sans antialiased selection:bg-neon selection:text-black">
@@ -475,6 +475,6 @@
     </div>
   </footer>
 
-  <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/main.js') }}?v={{ filemtime(public_path('js/main.js')) }}"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     };
   </script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}" />
 </head>
 <body class="bg-void text-gray-100 font-sans antialiased selection:bg-neon selection:text-black">
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -134,6 +134,6 @@
     csrf: @json(csrf_token()),
   };
 </script>
-  <script src="{{ asset('js/registration.js') }}"></script>
+  <script src="{{ asset('js/registration.js') }}?v={{ filemtime(public_path('js/registration.js')) }}"></script>
 </body>
 </html>

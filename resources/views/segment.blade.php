@@ -14,7 +14,7 @@
       } },
     };
   </script>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}" />
 </head>
 <body class="bg-void text-gray-100 font-sans antialiased selection:bg-neon selection:text-black">
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -47,6 +47,6 @@
       register: @json(route('register')),
     };
   </script>
-  <script src="{{ asset('js/segment.js') }}"></script>
+  <script src="{{ asset('js/segment.js') }}?v={{ filemtime(public_path('js/segment.js')) }}"></script>
 </body>
 </html>

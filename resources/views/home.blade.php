@@ -78,28 +78,45 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full pt-28 pb-16">
-      <p class="text-dim text-sm sm:text-base mb-6" data-testid="hero-terminal-line">
-        University of Global Village, Barishal · 29 August 2026
-      </p>
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-12">
+        <div class="min-w-0 flex-1 max-w-3xl">
+          <p class="text-dim text-xs sm:text-sm tracking-[0.18em] uppercase mb-5" data-testid="hero-terminal-line">
+            University of Global Village, Barishal · 10 October 2026
+          </p>
 
-      <h1 class="font-display font-800 leading-[1.05] tracking-tight text-[11vw] sm:text-[7vw] lg:text-[5.5rem]">
-        <span class="line-mask"><span class="line-inner">South Zone</span></span>
-        <span class="line-mask"><span class="line-inner text-neon">Programming</span></span>
-        <span class="line-mask"><span class="line-inner">Contest <span class="text-gray-400">'26</span></span></span>
-      </h1>
+          <h1 class="hero-title font-display font-800 tracking-tight">
+            <span class="line-mask"><span class="line-inner">3rd South Zone</span></span>
+            <span class="line-mask"><span class="line-inner text-neon">Programming Contest</span></span>
+            <span class="line-mask"><span class="line-inner">&amp; ICT Talent Hunt <span class="text-gray-400">'26</span></span></span>
+          </h1>
+        </div>
 
-      <div class="hero-fade mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-10" style="--d:.9s">
-        <p class="max-w-md text-sm sm:text-base text-dim leading-relaxed">
-          3rd edition — organized by the <span class="text-gray-200">UGV Programming Club</span>, supported by the Department of CSE,
-          University of Global Village, Barishal. Three contests, one campus, one day: 29 August 2026.
-        </p>
-
-        <!-- countdown -->
-        <div data-testid="countdown-timer" class="flex gap-3 sm:gap-4">
-          <div class="count-cell"><span id="cd-days" data-testid="countdown-days" class="count-num">00</span><span class="count-label">DAYS</span></div>
-          <div class="count-cell"><span id="cd-hours" data-testid="countdown-hours" class="count-num">00</span><span class="count-label">HRS</span></div>
-          <div class="count-cell"><span id="cd-mins" data-testid="countdown-mins" class="count-num">00</span><span class="count-label">MIN</span></div>
-          <div class="count-cell"><span id="cd-secs" data-testid="countdown-secs" class="count-num text-neon">00</span><span class="count-label">SEC</span></div>
+        <div class="hero-countdown hero-fade shrink-0 w-full lg:w-auto lg:pt-1" style="--d:.9s">
+          <p class="hero-countdown-kicker">Event starts in</p>
+          <div data-testid="countdown-timer" class="countdown-timer">
+            <div class="countdown-row">
+              <div class="count-cell">
+                <span id="cd-days" data-testid="countdown-days" class="count-num">00</span>
+                <span class="count-label">Days</span>
+              </div>
+              <span class="count-sep" aria-hidden="true">:</span>
+              <div class="count-cell">
+                <span id="cd-hours" data-testid="countdown-hours" class="count-num">00</span>
+                <span class="count-label">Hrs</span>
+              </div>
+            </div>
+            <div class="countdown-row">
+              <div class="count-cell">
+                <span id="cd-mins" data-testid="countdown-mins" class="count-num">00</span>
+                <span class="count-label">Min</span>
+              </div>
+              <span class="count-sep" aria-hidden="true">:</span>
+              <div class="count-cell">
+                <span id="cd-secs" data-testid="countdown-secs" class="count-num text-neon">00</span>
+                <span class="count-label">Sec</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -107,7 +124,6 @@
         <a href="{{ route('register') }}" data-testid="hero-register-btn" class="bg-neon text-black font-bold px-8 py-4 text-sm tracking-[0.2em] btn-hard">REGISTER YOUR TEAM</a>
         <!-- <a href="{{ route('payment') }}" data-testid="hero-payment-verify-btn" class="border border-white/25 px-8 py-4 text-sm tracking-[0.2em] text-gray-200 hover:border-neon hover:text-neon transition-colors duration-300 btn-hard">VERIFY PAYMENT</a> -->
         <a href="#segments" data-testid="hero-explore-btn" class="nav-anchor border border-white/20 px-8 py-4 text-sm tracking-[0.2em] text-gray-200 hover:border-cyber hover:text-cyber transition-colors duration-300">EXPLORE SEGMENTS →</a>
-        <span class="text-xs text-dim">29 Aug 2026 · UGV Campus, Barishal</span>
       </div>
     </div>
 
@@ -168,15 +184,15 @@
           <div class="relative z-10 flex flex-col h-full justify-between min-h-[26rem]">
             <div class="flex items-start justify-between">
               <span class="tag-chip border-neon text-neon">FLAGSHIP · UNIVERSITY</span>
-              <span class="tag-chip border-white/20 text-dim">ONLINE + ONSITE</span>
+              <span class="tag-chip border-white/20 text-dim">ONSITE</span>
             </div>
             <div>
               <h3 class="font-display font-800 text-2xl sm:text-4xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">SZPC-2026</h3>
-              <p class="text-sm text-dim max-w-md mb-6">The 3rd South Zone Programming Contest. Online prelim 22 Aug (2h, 5 problems), then a 3-hour, 9-problem onsite final at UGV's CSE labs. C, C++, Java or Python.</p>
+              <p class="text-sm text-dim max-w-md mb-6">The 3rd South Zone Programming Contest. A 3-hour, 9-problem onsite final at UGV's CSE labs on 10 October. C, C++, Java or Python. No preliminary.</p>
               <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4">
-                <div><span class="block text-dim tracking-widest mb-1">DATE</span>22 + 29 AUG</div>
+                <div><span class="block text-dim tracking-widest mb-1">REG CLOSES</span>8 OCT</div>
+                <div><span class="block text-dim tracking-widest mb-1">FINALS</span>10 OCT</div>
                 <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳1,000 / TEAM</div>
-                <div><span class="block text-dim tracking-widest mb-1">VENUE</span>UGV CSE LABS (B2)</div>
               </div>
               <a href="{{ route('segment', ['s' => 'szpc']) }}" data-testid="segment-link-programming" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="{{ url('/register?c=szpc') }}" data-testid="copy-link-szpc">⧉ COPY REG LINK</button>
             </div>
@@ -192,9 +208,10 @@
             </div>
             <div>
               <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-cyber transition-colors duration-300">Junior Programming</h3>
-              <p class="text-sm text-dim mb-6">School, college & polytechnic teams solve levelled problems. Online prelim 20 Aug (Scratch allowed), onsite final 29 Aug in the junior lab block.</p>
-              <div class="grid grid-cols-2 gap-4 text-xs border-t border-white/10 pt-4">
-                <div><span class="block text-dim tracking-widest mb-1">DATE</span>20 + 29 AUG</div>
+              <p class="text-sm text-dim mb-6">School, college & polytechnic teams solve levelled problems. Onsite final on 10 October in the junior lab block. No preliminary.</p>
+              <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4">
+                <div><span class="block text-dim tracking-widest mb-1">REG CLOSES</span>8 OCT</div>
+                <div><span class="block text-dim tracking-widest mb-1">FINALS</span>10 OCT</div>
                 <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳500 / TEAM</div>
               </div>
               <a href="{{ route('segment', ['s' => 'jpc']) }}" data-testid="segment-link-jpc" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="{{ url('/register?c=jpc') }}" data-testid="copy-link-jpc">⧉ COPY REG LINK</button>
@@ -211,11 +228,11 @@
             </div>
             <div>
               <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">ICT Talent Hunt Quiz</h3>
-              <p class="text-sm text-dim max-w-xl mb-6">An individual ICT knowledge showdown: written screening on 20 Aug, top 8 per category reach the live buzzer final in the UGV auditorium on 29 Aug, 3:00 PM.</p>
+              <p class="text-sm text-dim max-w-xl mb-6">An individual ICT knowledge showdown: live buzzer final in the UGV auditorium on 10 October. No preliminary screening.</p>
               <div class="grid grid-cols-3 gap-4 text-xs border-t border-white/10 pt-4 max-w-2xl">
-                <div><span class="block text-dim tracking-widest mb-1">DATE</span>20 + 29 AUG</div>
+                <div><span class="block text-dim tracking-widest mb-1">REG CLOSES</span>8 OCT</div>
+                <div><span class="block text-dim tracking-widest mb-1">FINALS</span>10 OCT</div>
                 <div><span class="block text-dim tracking-widest mb-1">FEE</span>৳100 / PERSON</div>
-                <div><span class="block text-dim tracking-widest mb-1">VENUE</span>AUDITORIUM</div>
               </div>
               <a href="{{ route('segment', ['s' => 'ithq']) }}" data-testid="segment-link-ithq" class="seg-details">FULL RULES &amp; PRIZES →</a><button type="button" class="copy-link-btn" data-copy="{{ url('/register?c=ithq') }}" data-testid="copy-link-ithq">⧉ COPY REG LINK</button>
             </div>
@@ -242,7 +259,7 @@
         <div class="reveal md:col-span-4 md:col-start-6 border-l-2 border-cyber pl-6 md:mt-16" style="--d:.25s">
           <span class="font-display font-900 text-5xl outline-text">02</span>
           <h3 class="font-display font-700 text-lg mt-4 mb-3 tracking-widest uppercase">The Craft</h3>
-          <p class="text-sm text-dim leading-relaxed">An online preliminary filters the field; the onsite final decides it. Nine problems, three hours, no shortcuts — set by UGV's own problem-setting committee to reward clean algorithmic thinking.</p>
+          <p class="text-sm text-dim leading-relaxed">One onsite final decides it. Nine problems, three hours, no shortcuts — set by UGV's own problem-setting committee to reward clean algorithmic thinking.</p>
         </div>
         <div class="reveal md:col-span-4 md:col-start-9 border-l-2 border-neon pl-6 md:mt-32" style="--d:.4s">
           <span class="font-display font-900 text-5xl outline-text">03</span>
@@ -256,7 +273,7 @@
         <div class="stat-cell"><span class="stat-num">03</span><span class="stat-label">CONTESTS</span></div>
         <div class="stat-cell"><span class="stat-num">500+</span><span class="stat-label">PARTICIPANTS EXPECTED</span></div>
         <div class="stat-cell"><span class="stat-num">35+</span><span class="stat-label">INSTITUTIONS</span></div>
-        <div class="stat-cell"><span class="stat-num text-neon">29 AUG</span><span class="stat-label">ONE MEGA DAY</span></div>
+        <div class="stat-cell"><span class="stat-num text-neon">10 OCT</span><span class="stat-label">ONE MEGA DAY</span></div>
       </div>
     </div>
   </section>
@@ -265,48 +282,44 @@
 
   <!-- ================= SCHEDULE ================= -->
   <section id="schedule" class="py-24 lg:py-32 border-t border-white/15 blueprint-x section-lift">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
       <div class="lg:col-span-4">
-        <p class="reveal text-neon text-sm font-medium mb-4">Schedule</p>
-        <h2 class="reveal font-display font-800 text-3xl sm:text-5xl uppercase tracking-tight sticky top-28" style="--d:.1s">Slowly,<br />then all<br />at once.</h2>
+        <p class="reveal text-neon text-sm font-medium mb-4 tracking-[0.2em] uppercase">Schedule</p>
+        <h2 class="reveal font-display font-800 text-3xl sm:text-5xl uppercase tracking-tight sticky top-28 leading-[1.05]" style="--d:.1s">Slowly,<br />then all<br />at once.</h2>
       </div>
       <div class="lg:col-span-8">
-        <ol class="relative border-l border-white/15 ml-2">
+        <ol class="timeline-list">
           <li class="reveal timeline-item" data-testid="timeline-item-1">
-            <span class="timeline-dot"></span>
-            <span class="timeline-date">23 JUL 2026</span>
-            <h3 class="timeline-title">SZPC registration opens</h3>
-            <p class="timeline-desc">University teams across the South Zone start reserving slots for the online preliminary round.</p>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-date" datetime="2026-07-23">23 Jul 2026</time>
+              <h3 class="timeline-title">SZPC registration opens</h3>
+              <p class="timeline-desc">University teams across the South Zone start reserving slots for the onsite final.</p>
+            </div>
           </li>
           <li class="reveal timeline-item" data-testid="timeline-item-2" style="--d:.1s">
-            <span class="timeline-dot"></span>
-            <span class="timeline-date">27 JUL 2026</span>
-            <h3 class="timeline-title">JPC & ITHQ registration opens</h3>
-            <p class="timeline-desc">Junior teams (school, college, polytechnic) and individual quiz participants join the roster.</p>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-date" datetime="2026-07-27">27 Jul 2026</time>
+              <h3 class="timeline-title">JPC &amp; ITHQ registration opens</h3>
+              <p class="timeline-desc">Junior teams (school, college, polytechnic) and individual quiz participants join the roster.</p>
+            </div>
           </li>
           <li class="reveal timeline-item" data-testid="timeline-item-3" style="--d:.2s">
-            <span class="timeline-dot"></span>
-            <span class="timeline-date">17–20 AUG 2026</span>
-            <h3 class="timeline-title">Registration closes</h3>
-            <p class="timeline-desc">JPC & ITHQ close 17 August; SZPC closes 20 August at 23:59 BST.</p>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-date" datetime="2026-10-08">8 Oct 2026</time>
+              <h3 class="timeline-title">Registration closes</h3>
+              <p class="timeline-desc">All contest registration closes on 8 October 2026 at 23:59 BST.</p>
+            </div>
           </li>
-          <li class="reveal timeline-item" data-testid="timeline-item-4" style="--d:.3s">
-            <span class="timeline-dot"></span>
-            <span class="timeline-date">20 AUG 2026</span>
-            <h3 class="timeline-title">Junior prelim + quiz screening</h3>
-            <p class="timeline-desc">JPC online preliminary (1.5h, 4 problems) and the ITHQ written screening round run side by side.</p>
-          </li>
-          <li class="reveal timeline-item" data-testid="timeline-item-5" style="--d:.4s">
-            <span class="timeline-dot"></span>
-            <span class="timeline-date">22 AUG 2026</span>
-            <h3 class="timeline-title">SZPC online preliminary</h3>
-            <p class="timeline-desc">University teams fight for onsite slots: 2 hours, 5 problems, in C, C++, Java or Python.</p>
-          </li>
-          <li class="reveal timeline-item" data-testid="timeline-item-6" style="--d:.5s">
-            <span class="timeline-dot border-neon"></span>
-            <span class="timeline-date text-neon">29 AUG 2026</span>
-            <h3 class="timeline-title">Finals day at UGV</h3>
-            <p class="timeline-desc">All three finals onsite — SZPC 9:15 AM, JPC in the junior lab block, quiz buzzer final 3:00 PM — then the combined prize-giving ceremony.</p>
+          <li class="reveal timeline-item is-final" data-testid="timeline-item-4" style="--d:.3s">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-date" datetime="2026-10-10">10 Oct 2026</time>
+              <h3 class="timeline-title">Finals day at UGV</h3>
+              <p class="timeline-desc">All three contests onsite — SZPC, JPC, and the quiz buzzer final — then the combined prize-giving ceremony.</p>
+            </div>
           </li>
         </ol>
       </div>
@@ -376,11 +389,11 @@
         </div>
         <div class="faq-item reveal" data-testid="faq-item-3" style="--d:.1s">
           <button class="faq-q" data-testid="faq-question-3"><span><span class="text-neon mr-3">&gt;</span>How much is the registration fee?</span><span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>SZPC-2026: ৳1,000 per team · JPC-2026: ৳500 per team · ITHQ-2026: ৳100 per person. After submitting the form, the registration committee (UGV Programming Club) contacts you with payment instructions. <span class="text-cyber">(This demo site does not process real payments.)</span></p></div>
+          <div class="faq-a"><p>SZPC-2026: ৳1,000 per team · JPC-2026: ৳500 per team · ITHQ-2026: ৳100 per person. After submitting the form, the registration committee (UGV Programming Club) contacts you with payment instructions.</p></div>
         </div>
         <div class="faq-item reveal" data-testid="faq-item-4" style="--d:.15s">
           <button class="faq-q" data-testid="faq-question-4"><span><span class="text-neon mr-3">&gt;</span>Is there an online qualifier?</span><span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>Yes. SZPC runs an online preliminary on 22 August (2h, 5 problems). The Junior prelim is 20 August (1.5h, Scratch allowed) and the quiz has a written screening the same day. All finals are onsite at UGV on 29 August.</p></div>
+          <div class="faq-a"><p>No. There is no online preliminary or screening round. All contests are held onsite at UGV on 10 October 2026.</p></div>
         </div>
         <div class="faq-item reveal" data-testid="faq-item-5" style="--d:.2s">
           <button class="faq-q" data-testid="faq-question-5"><span><span class="text-neon mr-3">&gt;</span>What should we bring on contest day?</span><span class="faq-icon">+</span></button>
@@ -388,7 +401,7 @@
         </div>
         <div class="faq-item reveal" data-testid="faq-item-6" style="--d:.25s">
           <button class="faq-q" data-testid="faq-question-6"><span><span class="text-neon mr-3">&gt;</span>Will participants get certificates?</span><span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>Every registered participant gets a certificate of participation. Top 10 junior teams per category in the preliminary earn merit certificates, and the quiz's fastest correct-answer streak gets special recognition at the 29 August ceremony.</p></div>
+          <div class="faq-a"><p>Every registered participant gets a certificate of participation. The quiz's fastest correct-answer streak gets special recognition at the 10 October ceremony.</p></div>
         </div>
       </div>
     </div>
@@ -401,10 +414,10 @@
       <div class="lg:col-span-5">
         <p class="reveal text-neon text-sm font-medium mb-4">Registration</p>
         <h2 class="reveal font-display font-800 text-3xl sm:text-5xl tracking-tight leading-tight" style="--d:.1s">Ready to<br />compete?</h2>
-        <p class="reveal text-sm text-dim leading-relaxed mt-6 max-w-sm" style="--d:.2s">Choose your contest, assemble your team, and submit your registration. Finals day: 29 August 2026 — one campus, three contests.</p>
+        <p class="reveal text-sm text-dim leading-relaxed mt-6 max-w-sm" style="--d:.2s">Choose your contest, assemble your team, and submit your registration. Finals day: 10 October 2026 — one campus, three contests.</p>
         <div class="reveal mt-10 border border-white/10 p-5 text-sm text-dim leading-relaxed space-y-2" style="--d:.3s">
           <p><span class="text-gray-200 font-medium">Expected teams:</span> 30–35 SZPC · 60–70 JPC</p>
-          <p><span class="text-gray-200 font-medium">Deadline:</span> 17–20 Aug 2026</p>
+          <p><span class="text-gray-200 font-medium">Deadline:</span> 8 Oct 2026</p>
           <p><span class="text-neon font-medium">Status:</span> Open for registration</p>
         </div>
       </div>

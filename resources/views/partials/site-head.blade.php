@@ -60,7 +60,7 @@
   '@type' => 'Event',
   'name' => $siteSettings->site_name,
   'description' => $siteSettings->meta_description,
-  'startDate' => '2026-08-29',
+  'startDate' => '2026-10-10',
   'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
   'eventStatus' => 'https://schema.org/EventScheduled',
   'location' => [

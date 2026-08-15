@@ -71,7 +71,7 @@
           <div>
             <!-- <p class="text-neon text-sm font-medium mb-4">Team registration</p> -->
             <h1 class="font-display font-800 text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">Register your <span class="text-neon">team</span></h1>
-            <!-- <p class="text-sm text-dim leading-relaxed mt-6 max-w-md">Choose your contest, enter your team details, and submit. Finals day: 29 August 2026 — one campus, three contests.</p> -->
+            <!-- <p class="text-sm text-dim leading-relaxed mt-6 max-w-md">Choose your contest, enter your team details, and submit. Finals day: 10 October 2026 — one campus, three contests.</p> -->
           </div>
           </div>
         <div class="register-step">

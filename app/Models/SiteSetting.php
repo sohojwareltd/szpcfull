@@ -82,10 +82,10 @@ class SiteSetting extends Model
         return [
             'site_name' => "SZPC '26",
             'meta_title' => "SZPC '26 — South Zone Programming Contest | University of Global Village",
-            'meta_description' => "SZPC '26 — 3rd UGV South Zone Programming Contest & ICT Talent Hunt, 29 August 2026 at University of Global Village, Barishal.",
+            'meta_description' => "SZPC '26 — 3rd UGV South Zone Programming Contest & ICT Talent Hunt, 10 October 2026 at University of Global Village, Barishal.",
             'meta_keywords' => 'SZPC, programming contest, UGV, Barishal, JPC, ITHQ, competitive programming',
             'og_title' => "SZPC '26 — South Zone Programming Contest",
-            'og_description' => 'Code. Solve. Quiz. Compete. 29 August 2026 at University of Global Village, Barishal.',
+            'og_description' => 'Code. Solve. Quiz. Compete. 10 October 2026 at University of Global Village, Barishal.',
             'theme_color' => '#1a1d24',
             'robots_index' => true,
             'contact_email' => 'szpc@ugv.edu.bd',

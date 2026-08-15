@@ -26,7 +26,7 @@ document.getElementById('menu-toggle').addEventListener('click', openMenu);
 document.getElementById('menu-close').addEventListener('click', closeMenu);
 
 /* ---------- countdown ---------- */
-const TARGET = new Date('2026-08-29T09:15:00+06:00').getTime();
+const TARGET = new Date('2026-10-10T09:15:00+06:00').getTime();
 const pad = (n) => String(n).padStart(2, '0');
 const cd = {
   days: document.getElementById('cd-days'),

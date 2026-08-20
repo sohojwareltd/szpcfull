@@ -99,7 +99,7 @@ function fieldHtml(key, def, prefix) {
   if (def.type === 'select') {
     return `<div class="field">
       <label for="${id}" class="field-label">${labelOf(key)}${reqMark(def)}</label>
-      <select id="${id}" name="${prefix}${key}" data-testid="field-${prefix}${key}" class="field-input" ${def.required ? 'required' : ''}>
+      <select id="${id}" name="${prefix}${key}" data-testid="field-${prefix}${key}" class="field-input" autocomplete="szpc-off" ${def.required ? 'required' : ''}>
         <option value="" disabled selected>Select an option</option>
         ${def.options.map((o) => `<option value="${o}">${o}</option>`).join('')}
       </select>
@@ -109,16 +109,15 @@ function fieldHtml(key, def, prefix) {
     return `<div class="field sm:col-span-2">
       <span class="field-label">${labelOf(key)}${reqMark(def)}</span>
       <div class="tshirt-group" data-testid="field-${prefix}${key}">
-        ${def.options.map((o) => `<label class="tshirt-pill"><input type="radio" name="${prefix}${key}" value="${o}" /><span>${o}</span></label>`).join('')}
+        ${def.options.map((o) => `<label class="tshirt-pill"><input type="radio" name="${prefix}${key}" value="${o}" autocomplete="szpc-off" /><span>${o}</span></label>`).join('')}
       </div>
     </div>`;
   }
   const ph = placeholderOf(key) ? ` placeholder="${esc(placeholderOf(key))}"` : '';
   const inputType = def.type === 'email' ? 'email' : 'text';
-  const autoComplete = key === 'email' ? 'email' : key === 'phone' ? 'tel' : key.includes('name') ? 'name' : 'off';
   return `<div class="field">
     <label for="${id}" class="field-label">${labelOf(key)}${reqMark(def)}</label>
-    <input id="${id}" name="${prefix}${key}" data-testid="field-${prefix}${key}" type="${inputType}" class="field-input"${ph} autocomplete="${autoComplete}" ${def.required ? 'required' : ''} />
+    <input id="${id}" name="${prefix}${key}" data-testid="field-${prefix}${key}" type="${inputType}" class="field-input"${ph} autocomplete="szpc-off" autocapitalize="off" autocorrect="off" spellcheck="false" ${def.required ? 'required' : ''} />
   </div>`;
 }
 

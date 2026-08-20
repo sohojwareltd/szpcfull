@@ -45,7 +45,6 @@
         <a href="#schedule" data-testid="nav-link-schedule" class="nav-anchor nav-link">SCHEDULE</a>
         <a href="#prizes" data-testid="nav-link-prizes" class="nav-anchor nav-link">PRIZES</a>
         <!-- <a href="#sponsors" data-testid="nav-link-sponsors" class="nav-anchor nav-link">SPONSORS</a> -->
-        <a href="#committee" data-testid="nav-link-committee" class="nav-anchor nav-link">TEAM</a>
         <a href="#faq" data-testid="nav-link-faq" class="nav-anchor nav-link">FAQ</a>
       </nav>
       <div class="flex items-center gap-3 sm:gap-4">
@@ -64,7 +63,6 @@
     <a href="#schedule" data-testid="mobile-link-schedule" class="nav-anchor mobile-link">SCHEDULE</a>
     <a href="#prizes" data-testid="mobile-link-prizes" class="nav-anchor mobile-link">PRIZES</a>
     <!-- <a href="#sponsors" data-testid="mobile-link-sponsors" class="nav-anchor mobile-link">SPONSORS</a> -->
-    <a href="#committee" data-testid="mobile-link-committee" class="nav-anchor mobile-link">TEAM</a>
     <a href="#faq" data-testid="mobile-link-faq" class="nav-anchor mobile-link">FAQ</a>
     <a href="{{ route('payment') }}" data-testid="mobile-link-payment-verify" class="border border-white/25 text-gray-100 px-8 py-3">VERIFY PAYMENT</a>
     <a href="{{ route('register') }}" data-testid="mobile-link-register" class="border border-neon text-neon px-8 py-3 mt-4">REGISTER</a>
@@ -468,7 +466,6 @@
           <li><a href="#schedule" data-testid="footer-link-schedule" class="nav-anchor hover:text-neon transition-colors duration-300">Schedule</a></li>
           <li><a href="#prizes" data-testid="footer-link-prizes" class="nav-anchor hover:text-neon transition-colors duration-300">Prizes</a></li>
           <!-- <li><a href="#sponsors" data-testid="footer-link-sponsors" class="nav-anchor hover:text-neon transition-colors duration-300">Sponsors</a></li> -->
-          <li><a href="#committee" data-testid="footer-link-committee" class="nav-anchor hover:text-neon transition-colors duration-300">Team</a></li>
           <li><a href="#faq" data-testid="footer-link-faq" class="nav-anchor hover:text-neon transition-colors duration-300">FAQ</a></li>
           <li><a href="{{ route('register') }}" data-testid="footer-link-register" class="hover:text-neon transition-colors duration-300">Register</a></li>
           <li><a href="{{ route('payment') }}" data-testid="footer-link-payment-verify" class="hover:text-neon transition-colors duration-300">Verify payment</a></li>

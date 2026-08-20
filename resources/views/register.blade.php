@@ -93,7 +93,7 @@
         </div>
         </div>
 
-        <form id="reg-form" data-testid="registration-form" class="hidden register-form-panel w-full max-w-none" method="post" action="{{ route('register.store') }}" novalidate>
+        <form id="reg-form" data-testid="registration-form" class="hidden register-form-panel w-full max-w-none" method="post" action="{{ route('register.store') }}" novalidate autocomplete="off">
           @csrf
           <input type="hidden" name="contest_type" id="contest-type-input" value="" />
 

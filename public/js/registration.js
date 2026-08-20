@@ -43,7 +43,7 @@ const FORM_SPEC = {
       },
     },
     'ITHQ-2026': {
-      category: { type: 'select', required: true, options: ['School', 'College'] },
+      category: { type: 'select', required: true, options: ['School', 'College', 'Polytechnic'] },
       full_name: { type: 'text', required: true },
       institution_name: { type: 'text', required: true },
       email: { type: 'email', required: true },
@@ -77,7 +77,7 @@ const PLACEHOLDERS = {
   email: 'you@university.edu',
   full_name: 'Full legal name',
   phone: '01XXXXXXXXX',
-  institution_name: 'School or college name',
+  institution_name: 'School, college or polytechnic name',
   district: 'e.g. Barishal',
   address: 'City, district',
 };

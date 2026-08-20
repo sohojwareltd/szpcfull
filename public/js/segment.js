@@ -81,7 +81,7 @@ const SEGMENTS = {
     accent: 'neon',
     kicker: 'ICT quiz olympiad',
     title: 'ICT Talent Hunt Quiz',
-    chips: ['INDIVIDUAL', 'SCHOOL & COLLEGE', 'LIVE BUZZER FINAL'],
+    chips: ['INDIVIDUAL', 'SCHOOL · COLLEGE · POLYTECHNIC', 'LIVE BUZZER FINAL'],
     overview: 'ITHQ-2026 is an individual ICT knowledge showdown — computer fundamentals, digital safety, networks and current tech trends. Participants compete in the live buzzer final in the UGV auditorium on 10 October. No preliminary screening.',
     meta: [
       ['FORMAT', 'INDIVIDUAL'],
@@ -92,11 +92,13 @@ const SEGMENTS = {
     eligibility: [
       'School category: class 6–10 students.',
       'College category: HSC 1st & 2nd year students.',
+      'Polytechnic category: Diploma in Engineering students (all years).',
       'Individual registration only; 150–200 participants expected from 15–20 institutions.',
     ],
     rules: [
       'School category topics: computer basics, ICT in daily life, digital safety, general tech awareness.',
       'College category topics: programming basics, CS fundamentals, internet & networks, current tech trends.',
+      'Polytechnic category topics: programming basics, CS fundamentals, internet & networks, current tech trends.',
       'There is no written screening — all registered participants compete onsite.',
       'The final runs 10 October in the UGV auditorium — MCQ and written format with live buzzers.',
       'A special recognition goes to the fastest correct-answer streak in the buzzer final.',

@@ -224,7 +224,7 @@
           <div class="relative z-10 flex flex-col h-full justify-between min-h-[20rem]">
             <div class="flex items-start justify-between">
               <span class="tag-chip border-neon text-neon">BUZZER FINAL</span>
-              <span class="tag-chip border-white/20 text-dim">INDIVIDUAL · SCHOOL & COLLEGE</span>
+              <span class="tag-chip border-white/20 text-dim">INDIVIDUAL · SCHOOL · COLLEGE · POLYTECHNIC</span>
             </div>
             <div>
               <h3 class="font-display font-800 text-2xl sm:text-3xl uppercase mb-4 group-hover:text-neon transition-colors duration-300">ICT Talent Hunt Quiz</h3>
@@ -339,7 +339,7 @@
       <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 border border-white/10 divide-x divide-y lg:divide-y-0 divide-white/10">
         <div class="reveal prize-cell" data-testid="prize-programming"><span class="prize-amt">SZPC</span><span class="prize-label">CHAMPION + RUNNER-UP TROPHIES</span><span class="prize-sub">UNIVERSITY LEVEL</span></div>
         <div class="reveal prize-cell" data-testid="prize-hackathon" style="--d:.1s"><span class="prize-amt">JPC</span><span class="prize-label">TROPHIES PER CATEGORY</span><span class="prize-sub">SCHOOL / COLLEGE / POLYTECHNIC</span></div>
-        <div class="reveal prize-cell" data-testid="prize-esports" style="--d:.2s"><span class="prize-amt">ITHQ</span><span class="prize-label">TROPHIES PER CATEGORY</span><span class="prize-sub">SCHOOL / COLLEGE + STREAK AWARD</span></div>
+        <div class="reveal prize-cell" data-testid="prize-esports" style="--d:.2s"><span class="prize-amt">ITHQ</span><span class="prize-label">TROPHIES PER CATEGORY</span><span class="prize-sub">SCHOOL / COLLEGE / POLYTECHNIC + STREAK AWARD</span></div>
         <div class="reveal prize-cell" data-testid="prize-quiz" style="--d:.3s"><span class="prize-amt">ALL</span><span class="prize-label">CERTIFICATES</span><span class="prize-sub">PARTICIPATION + MERIT (TOP 10)</span></div>
       </div>
     </div>
@@ -381,7 +381,7 @@
       <div class="border-t border-white/10">
         <div class="faq-item reveal" data-testid="faq-item-1">
           <button class="faq-q" data-testid="faq-question-1"><span><span class="text-neon mr-3">&gt;</span>Who can participate?</span><span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>Three contests, three doors: SZPC-2026 for undergraduate teams of South Zone universities (UGV, BU, PSTU, GSTU, KUET, PUST, KU and others); the Junior Programming Contest for school, college & polytechnic teams; and the ICT Talent Hunt Quiz for individual school (class 6–10) and college (HSC) students.</p></div>
+          <div class="faq-a"><p>Three contests, three doors: SZPC-2026 for undergraduate teams of South Zone universities (UGV, BU, PSTU, GSTU, KUET, PUST, KU and others); the Junior Programming Contest for school, college & polytechnic teams; and the ICT Talent Hunt Quiz for individual school (class 6–10), college (HSC), and polytechnic (diploma) students.</p></div>
         </div>
         <div class="faq-item reveal" data-testid="faq-item-2" style="--d:.05s">
           <button class="faq-q" data-testid="faq-question-2"><span><span class="text-neon mr-3">&gt;</span>What are the team sizes?</span><span class="faq-icon">+</span></button>

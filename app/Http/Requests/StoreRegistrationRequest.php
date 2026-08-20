@@ -54,7 +54,7 @@ class StoreRegistrationRequest extends FormRequest
             ];
         } elseif ($contest === ContestType::Ithq->value) {
             $rules += [
-                'category' => ['required', Rule::in(['School', 'College'])],
+                'category' => ['required', Rule::in(['School', 'College', 'Polytechnic'])],
                 'full_name' => ['required', 'string', 'max:255'],
                 'institution_name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', 'max:255'],

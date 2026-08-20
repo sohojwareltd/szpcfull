@@ -29,8 +29,10 @@ const SEGMENTS = {
       'The judging committee\'s verdict is final.',
     ],
     schedule: [
-      ['23 JUL', 'Registration opens'],
-      ['8 OCT', 'Registration closes'],
+      ['17 AUG', 'Pre-registration opens'],
+      ['25 SEP', 'Pre-registration closes'],
+      ['27 SEP', 'Slot allocation published'],
+      ['8 OCT', 'Final registration closes'],
       ['10 OCT', 'Onsite final + prize giving (1:45–2:30 PM)'],
     ],
     prizes: [
@@ -65,8 +67,10 @@ const SEGMENTS = {
       'Problems and difficulty are levelled separately for each category.',
     ],
     schedule: [
-      ['27 JUL', 'Registration opens'],
-      ['8 OCT', 'Registration closes'],
+      ['17 AUG', 'Pre-registration opens'],
+      ['25 SEP', 'Pre-registration closes'],
+      ['27 SEP', 'Slot allocation published'],
+      ['8 OCT', 'Final registration closes'],
       ['10 OCT', 'Onsite final + combined prize giving'],
     ],
     prizes: [
@@ -104,8 +108,10 @@ const SEGMENTS = {
       'A special recognition goes to the fastest correct-answer streak in the buzzer final.',
     ],
     schedule: [
-      ['27 JUL', 'Registration opens'],
-      ['8 OCT', 'Registration closes'],
+      ['17 AUG', 'Pre-registration opens'],
+      ['25 SEP', 'Pre-registration closes'],
+      ['27 SEP', 'Slot allocation published'],
+      ['8 OCT', 'Final registration closes'],
       ['10 OCT', 'Onsite buzzer final + prize giving'],
     ],
     prizes: [

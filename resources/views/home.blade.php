@@ -292,28 +292,36 @@
           <li class="reveal timeline-item" data-testid="timeline-item-1">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-body">
-              <time class="timeline-date" datetime="2026-07-23">23 Jul 2026</time>
-              <h3 class="timeline-title">SZPC registration opens</h3>
-              <p class="timeline-desc">University teams across the South Zone start reserving slots for the onsite final.</p>
+              <time class="timeline-date" datetime="2026-08-17">17 Aug 2026</time>
+              <h3 class="timeline-title">Pre-registration opens</h3>
+              <p class="timeline-desc">Teams and individual participants across all contests can start pre-registering for SZPC, JPC, and ITHQ.</p>
             </div>
           </li>
           <li class="reveal timeline-item" data-testid="timeline-item-2" style="--d:.1s">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-body">
-              <time class="timeline-date" datetime="2026-07-27">27 Jul 2026</time>
-              <h3 class="timeline-title">JPC &amp; ITHQ registration opens</h3>
-              <p class="timeline-desc">Junior teams (school, college, polytechnic) and individual quiz participants join the roster.</p>
+              <time class="timeline-date" datetime="2026-09-25">25 Sep 2026</time>
+              <h3 class="timeline-title">Pre-registration closes</h3>
+              <p class="timeline-desc">Pre-registration window ends. Submit by 25 September to be considered for slot allocation.</p>
             </div>
           </li>
           <li class="reveal timeline-item" data-testid="timeline-item-3" style="--d:.2s">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-body">
-              <time class="timeline-date" datetime="2026-10-08">8 Oct 2026</time>
-              <h3 class="timeline-title">Registration closes</h3>
-              <p class="timeline-desc">All contest registration closes on 8 October 2026 at 23:59 BST.</p>
+              <time class="timeline-date" datetime="2026-09-27">27 Sep 2026</time>
+              <h3 class="timeline-title">Slot allocation published</h3>
+              <p class="timeline-desc">Allocated slots for qualified teams and participants are published.</p>
             </div>
           </li>
-          <li class="reveal timeline-item is-final" data-testid="timeline-item-4" style="--d:.3s">
+          <li class="reveal timeline-item" data-testid="timeline-item-4" style="--d:.3s">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-date" datetime="2026-10-08">8 Oct 2026</time>
+              <h3 class="timeline-title">Final registration closes</h3>
+              <p class="timeline-desc">Final registration and confirmation close on 8 October 2026 at 23:59 BST.</p>
+            </div>
+          </li>
+          <li class="reveal timeline-item is-final" data-testid="timeline-item-5" style="--d:.4s">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-body">
               <time class="timeline-date" datetime="2026-10-10">10 Oct 2026</time>
